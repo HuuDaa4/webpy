@@ -1,0 +1,190 @@
+/* stylecart.css */
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff9fb;
+  color: #333;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(to right, #fbe8ec, #f5d9e5);
+  padding: 20px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #d46a92;
+}
+
+.logo img {
+  width: 50px;
+  height: 20px;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: #d46a92;
+}
+
+/* Keranjang */
+.keranjang-section {
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.keranjang-section h2 {
+  font-size: 2rem;
+  color: #d46a92;
+  margin-bottom: 40px;
+}
+
+.keranjang-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.keranjang-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.keranjang-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cart-item img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cart-detail h4 {
+  margin: 0 0 10px;
+  color: #d46a92;
+}
+
+
+.item-detail {
+  flex: 1;
+  text-align: left;
+}
+
+.item-detail h4 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: #b94f7b;
+}
+
+.item-detail p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.keranjang-item input[type="number"] {
+  width: 60px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.hapus {
+  background: #f06565;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hapus:hover {
+  background: #d94b4b;
+}
+
+/* Total + Checkout */
+.total {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.total h3 {
+  font-size: 1.3rem;
+  color: #d46a92;
+  margin-bottom: 20px;
+}
+
+.checkout {
+  background: #d46a92;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkout:hover {
+  background: #b94f7b;
+}
+
+/* Footer */
+footer {
+  background: #fbe8ec;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}

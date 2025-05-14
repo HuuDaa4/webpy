@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff9fb;
+  color: #333;
+}
+
+/* HEADER */
+.site-header {
+  background: linear-gradient(to right, #fbe8ec, #f5d9e5);
+  padding: 20px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #d46a92;
+}
+
+.logo img {
+  width: 50px;
+  height: 20px;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: #d46a92;
+}
+
+/* KONTAK SECTION */
+.contact-section {
+  padding: 60px 10%;
+  background: #fffafc;
+  text-align: center;
+}
+
+.contact-section h1 {
+  color: #d46a92;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background: #d46a92;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #b94f7b;
+}
+
+/* FOOTER */
+footer {
+  background: #fbe8ec;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}

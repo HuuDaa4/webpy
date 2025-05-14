@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hudraè Skincare - Alami & Aman</title>
+  <link rel="stylesheet" href="styleindex.css" />
+  <link rel="icon" href="images/logo.png" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+
+ <!-- Pemutar Musik -->
+<audio id="bg-music" autoplay>
+  <source id="music-src" src="music/love-dive.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Tombol Toggle -->
+<button onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;z-index:999;background:#d46a92;color:#fff;border:none;padding:10px 15px;border-radius:8px;">
+  🔊 Musik
+</button>
+
+<!-- Script Pemutar Otomatis 2 Lagu -->
+<script>
+  const music = document.getElementById("bg-music");
+  const source = document.getElementById("music-src");
+
+  const playlist = ["music/love-dive.mp3", "music/heya.mp3"];
+  let index = parseInt(localStorage.getItem("musicIndex")) || 0;
+  let time = parseFloat(localStorage.getItem("musicTime")) || 0;
+  let muted = localStorage.getItem("musicMuted") === "true";
+
+  function loadMusic() {
+    source.src = playlist[index];
+    music.load();
+    music.currentTime = time;
+    music.muted = muted;
+    music.play().catch(() => {}); // Prevent error if blocked
+  }
+
+  // Simpan waktu dan index
+  music.addEventListener("timeupdate", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+  });
+
+  // Jika lagu selesai (jika loop=false)
+  music.addEventListener("ended", () => {
+    index = (index + 1) % playlist.length;
+    localStorage.setItem("musicIndex", index);
+    localStorage.setItem("musicTime", 0);
+    loadMusic();
+  });
+
+  function toggleMusic() {
+    music.muted = !music.muted;
+    localStorage.setItem("musicMuted", music.muted);
+    if (music.paused) music.play();
+  }
+
+  // Pastikan user klik memicu play pertama kali
+  window.addEventListener("click", () => {
+    if (music.paused) music.play();
+  });
+
+  // Mulai
+  loadMusic();
+</script>
+
+
+  <!-- HEADER -->
+  <header class="site-header" data-aos="fade-down">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo Hudraè" />
+      <span>Hudraè</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="active">Beranda</a>
+      <a href="about.html">Tentang</a>
+      <a href="contact.html">Kontak</a>
+      <a href="shop.html">Toko</a>
+      <a href="cart.html">Keranjang</a>
+      <a href="checkout.html">Bayar</a>
+      <a href="invoice.html">Tagihan</a>
+      <a href="login.html">Masuk</a>
+      <a href="register.html">Daftar</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" data-aos="fade-up">
+    <h1 data-aos="fade-right">Cantik Alami Bersama <span>Hudraè</span></h1>
+    <p data-aos="fade-left" data-aos-delay="200">
+      Perawatan kulit berbasis bahan alami yang aman dan efektif untuk semua jenis kulit.
+    </p>
+    <a href="shop.html" class="btn-cta" data-aos="zoom-in" data-aos-delay="300">Belanja Sekarang</a>
+  </section>
+
+  <!-- KEUNGGULAN -->
+  <section class="fitur-section">
+    <h2 data-aos="fade-up">Kenapa Memilih Hudraè?</h2>
+    <div class="fitur-grid">
+      <div class="fitur-item" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/natural.png" alt="Alami" />
+        <h4>100% Alami</h4>
+        <p>Diperkaya ekstrak tumbuhan tanpa bahan berbahaya.</p>
+      </div>
+      <div class="fitur-item" data-aos="zoom-in" data-aos-delay="200">
+        <img src="images/tested.png" alt="Teruji" />
+        <h4>Teruji Dermatologi</h4>
+        <p>Aman untuk kulit sensitif dan berjerawat.</p>
+      </div>
+      <div class="fitur-item" data-aos="zoom-in" data-aos-delay="300">
+        <img src="images/glow.png" alt="Bercahaya" />
+        <h4>Mencerahkan Kulit</h4>
+        <p>Meningkatkan elastisitas dan menambah glow alami.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUK UNGGULAN -->
+  <section class="produk-section">
+    <h2 data-aos="fade-up">Produk Unggulan</h2>
+    <div class="produk-container">
+      <div class="produk-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk1.jpg" alt="Centella Ampoule" />
+        <h4>Centella Ampoule</h4>
+        <p>Mencerahkan kulit kusam dan menutrisi dari dalam.</p>
+        <p class="harga">Rp135.000</p>
+        <a href="shop.html" class="btn-produk">Lihat Detail</a>
+      </div>
+      <div class="produk-card" data-aos="zoom-in" data-aos-delay="200">
+        <img src="images/produk2.jpg" alt="Snail Mucin Essence" />
+        <h4>Snail Mucin Essence</h4>
+        <p>Menyejukkan dan melembapkan dengan lembut.</p>
+        <p class="harga">Rp165.000</p>
+        <a href="shop.html" class="btn-produk">Lihat Detail</a>
+      </div>
+      <div class="produk-card" data-aos="zoom-in" data-aos-delay="300">
+        <img src="images/produk3.jpg" alt="The Ordinary Multi Peptide Lash and Brow Serum" />
+        <h4>The Ordinary Multi Peptide Lash and Brow Serum</h4>
+        <p>Mencerahkan Kulit Dan mengencangkan Kulit anda.</p>
+        <p class="harga">Rp200.000</p>
+        <a href="shop.html" class="btn-produk">Lihat Detail</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONI PREVIEW -->
+  <section class="testimonial-preview" data-aos="fade-up">
+    <h2 data-aos="fade-up">Apa Kata Mereka?</h2>
+    <div class="testimonial-items">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+        <p>"Kulitku jadi lebih cerah dan lembap sejak pakai Hudraè. Cinta banget!"</p>
+        <h4>- Ayu, 27</h4>
+      </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+        <p>"Produk lokal dengan kualitas global. Teksturnya ringan dan hasilnya nyata!"</p>
+        <h4>- Dinda, 24</h4>
+      </div>
+    </div>
+    <a href="testimoni.html" class="btn-cta" data-aos="zoom-in" data-aos-delay="300" style="margin-top: 40px;">Lihat Semua Testimoni</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer data-aos="fade-up">
+    <p>&copy; 2025 Hudraè Skincare. Semua Hak Dilindungi.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 120
+    });
+  </script>
+
+</body>
+</html>

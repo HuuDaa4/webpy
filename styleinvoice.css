@@ -1,0 +1,149 @@
+/* RESET DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff9fb;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ================= HEADER ================= */
+.site-header {
+  background: linear-gradient(to right, #fbe8ec, #f5d9e5);
+  padding: 20px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #d46a92;
+}
+
+.logo img {
+  width: 50px;
+  height: 20px;
+}
+
+.nav a {
+  margin-left: 20px;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: #d46a92;
+}
+
+/* ================= INVOICE SECTION ================= */
+.invoice-section {
+  padding: 60px 10%;
+  background: #fff9fb;
+  text-align: center;
+}
+
+.invoice-container {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  animation: fadeInUp 0.8s ease;
+}
+
+.invoice-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #d46a92;
+  text-align: center;
+}
+
+.invoice-container h2,
+.invoice-container h3 {
+  color: #d46a92;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.invoice-container p,
+.invoice-container li {
+  font-size: 1rem;
+  color: #555;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.invoice-list {
+  padding-left: 20px;
+  list-style: disc;
+  margin-top: 10px;
+}
+
+.invoice-list li {
+  margin-bottom: 6px;
+}
+
+.invoice-container hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* ================= CTA BUTTON ================= */
+.btn-cta {
+  display: inline-block;
+  margin-top: 30px;
+  background: #d46a92;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: #b94f7b;
+}
+
+/* ================= ANIMASI ================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background: #fbe8ec;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}

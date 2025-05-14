@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Toko | Hudraè Skincare</title>
+  <link rel="stylesheet" href="styleshop.css"/>
+  <link rel="icon" href="images/logo.png"/>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+
+ <!-- Pemutar Musik -->
+<audio id="bg-music" autoplay>
+  <source id="music-src" src="music/love-dive.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Tombol Toggle -->
+<button onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;z-index:999;background:#d46a92;color:#fff;border:none;padding:10px 15px;border-radius:8px;">
+  🔊 Musik
+</button>
+
+<!-- Script Pemutar Otomatis 2 Lagu -->
+<script>
+  const music = document.getElementById("bg-music");
+  const source = document.getElementById("music-src");
+
+  const playlist = ["music/love-dive.mp3", "music/heya.mp3"];
+  let index = parseInt(localStorage.getItem("musicIndex")) || 0;
+  let time = parseFloat(localStorage.getItem("musicTime")) || 0;
+  let muted = localStorage.getItem("musicMuted") === "true";
+
+  function loadMusic() {
+    source.src = playlist[index];
+    music.load();
+    music.currentTime = time;
+    music.muted = muted;
+    music.play().catch(() => {}); // Prevent error if blocked
+  }
+
+  // Simpan waktu dan index
+  music.addEventListener("timeupdate", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+  });
+
+  // Jika lagu selesai (jika loop=false)
+  music.addEventListener("ended", () => {
+    index = (index + 1) % playlist.length;
+    localStorage.setItem("musicIndex", index);
+    localStorage.setItem("musicTime", 0);
+    loadMusic();
+  });
+
+  function toggleMusic() {
+    music.muted = !music.muted;
+    localStorage.setItem("musicMuted", music.muted);
+    if (music.paused) music.play();
+  }
+
+  // Pastikan user klik memicu play pertama kali
+  window.addEventListener("click", () => {
+    if (music.paused) music.play();
+  });
+
+  // Mulai
+  loadMusic();
+</script>
+
+
+  <!-- HEADER -->
+  <header class="site-header" data-aos="fade-down">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo Hudraè" />
+      <span>Hudraè</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Beranda</a>
+      <a href="about.html">Tentang</a>
+      <a href="contact.html">Kontak</a>
+      <a href="shop.html" class="active">Toko</a>
+      <a href="cart.html">Keranjang</a>
+      <a href="checkout.html">Bayar</a>
+      <a href="invoice.html">Tagihan</a>
+      <a href="login.html">Masuk</a>
+      <a href="register.html">Daftar</a>
+    </nav>
+  </header>
+
+  <!-- PRODUK TERBARU -->
+  <section class="store-section">
+    <h1 data-aos="fade-up">Produk Terbaru</h1>
+    <div class="product-grid">
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk1.jpg" alt="Centella Ampoule" />
+        <h4>Centella Ampoule</h4>
+        <p class="harga">Rp135.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Centella Ampoule', 135000, 'images/produk1.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Centella Ampoule', 135000, 'images/produk1.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk2.jpg" alt="Snail Mucin Essence" />
+        <h4>Snail Mucin Essence</h4>
+        <p class="harga">Rp165.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Snail Mucin Essence', 165000, 'images/produk2.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Snail Mucin Essence', 165000, 'images/produk2.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk3.jpg" alt="The Ordinary Multi Peptide Lash and Brow Serum" />
+        <h4>The Ordinary Multi Peptide Lash and Brow Serum</h4>
+        <p class="harga">Rp200.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('The Ordinary Multi Peptide Lash and Brow Serum', 200000, 'images/produk3.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('The Ordinary Multi Peptide Lash and Brow Serum', 200000, 'images/produk3.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk4.jpg" alt="Kahf Oil & Acne Control Face Wash" />
+        <h4>Kahf Oil & Acne Control Face Wash</h4>
+        <p class="harga">Rp115.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Kahf Oil & Acne Control Face Wash', 115000, 'images/produk4.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Kahf Oil & Acne Control Face Wash', 115000, 'images/produk4.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk5.jpg" alt="Beauty of Joseon Ginseng Essence Water" />
+        <h4>Beauty of Joseon Ginseng Essence Water</h4>
+        <p class="harga">Rp199.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Beauty of Joseon Ginseng Essence Water', 199000, 'images/produk5.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Beauty of Joseon Ginseng Essence Water', 199000, 'images/produk5.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk6.jpg" alt="Torriden DIVE-IN Serum Asam Hialuronat Molekuler Rendah 50mL" />
+        <h4>Torriden DIVE-IN Serum Asam Hialuronat Molekuler Rendah 50mL</h4>
+        <p class="harga">Rp239.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Torriden DIVE-IN Serum Asam Hialuronat Molekuler Rendah 50mL', 239000, 'images/produk6.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Torriden DIVE-IN Serum Asam Hialuronat Molekuler Rendah 50mL', 239000, 'images/produk6.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk7.jpg" alt="Heartleaf Clear Pad" />
+        <h4>Heartleaf Clear Pad</h4>
+        <p class="harga">Rp190.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Heartleaf Clear Pad', 190000, 'images/produk7.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Heartleaf Clear Pad', 190000, 'images/produk7.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk8.jpg" alt="Beauty of Joseon Matte sun stick Mugwort + Camelia 18g" />
+        <h4>Beauty of Joseon Matte sun stick Mugwort + Camelia 18g</h4>
+        <p class="harga">Rp220.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Beauty of Joseon Matte sun stick Mugwort + Camelia 18g', 220000, 'images/produk8.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Beauty of Joseon Matte sun stick Mugwort + Camelia 18g', 220000, 'images/produk8.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk9.jpg" alt="Arencia Fresh Green Rice Mochi Cleanser" />
+        <h4>Arencia Fresh Green Rice Mochi Cleanser</h4>
+        <p class="harga">Rp195.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Arencia Fresh Green Rice Mochi Cleanser', 195000, 'images/produk9.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Arencia Fresh Green Rice Mochi Cleanser', 195000, 'images/produk9.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk10.jpg" alt="innisfree Green Tea Cleansers" />
+        <h4>innisfree Green Tea Cleansers</h4>
+        <p class="harga">Rp125.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('innisfree Green Tea Cleansers', 125000, 'images/produk10.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('innisfree Green Tea Cleansers', 125000, 'images/produk10.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk11.jpg" alt="IUNIK Centella Calming Gel Cream" />
+        <h4>IUNIK Centella Calming Gel Cream</h4>
+        <p class="harga">Rp155.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('IUNIK Centella Calming Gel Cream', 155000, 'images/produk11.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('IUNIK Centella Calming Gel Cream', 155000, 'images/produk11.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/produk12.jpg" alt="kintific 5X Ceramide Serum Sunscreen SPF50 PA++++" />
+        <h4>kintific 5X Ceramide Serum Sunscreen SPF50 PA++++</h4>
+        <p class="harga">Rp125.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('kintific 5X Ceramide Serum Sunscreen SPF50 PA++++', 125000, 'images/produk12.jpg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('kintific 5X Ceramide Serum Sunscreen SPF50 PA++++', 125000, 'images/produk12.jpg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAKET BUNDLING -->
+  <section class="store-section">
+    <h1 data-aos="fade-up">Paket Bundling</h1>
+    <div class="product-grid">
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket1.jpeg" alt="Wardah Acnederm Series 1 Paket isi 7" />
+        <h4>Wardah Acnederm Series 1 Paket isi 7</h4>
+        <p class="harga">Rp379.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Wardah Acnederm Series 1 Paket isi 7', 379000, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Wardah Acnederm Series 1 Paket isi 7', 379000, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket2.jpeg" alt="KAHF Paket Skincare Body Care" />
+        <h4>KAHF Paket Skincare Body Care</h4>
+        <p class="harga">Rp243.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('KAHF Paket Skincare Body Care', 243000, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('KAHF Paket Skincare Body Care', 243000, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket3.jpeg" alt="LUMIWHITE Package Series" />
+        <h4>LUMIWHITE Package Series</h4>
+        <p class="harga">Rp220.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('LUMIWHITE Package Series', 220000, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('LUMIWHITE Package Series', 220000, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket4.jpeg" alt="PAKET SKINCARE SCARLETT LENGKAP" />
+        <h4>PAKET SKINCARE SCARLETT LENGKAP</h4>
+        <p class="harga">Rp200.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('PAKET SKINCARE SCARLETT LENGKAP', 200000, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('PAKET SKINCARE SCARLETT LENGKAP', 200000, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket5.jpeg" alt="Navigating Mixsoons Skincare" />
+        <h4>Navigating Mixsoons Skincare</h4>
+        <p class="harga">Rp140.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Navigating Mixsoons Skincare', 140000, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Navigating Mixsoons Skincare', 140000, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket6.jpeg" alt="Beauty Of Jeoson Skincare Package Series" />
+        <h4>Beauty Of Jeoson Skincare Package Series</h4>
+        <p class="harga">Rp540.700</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Beauty Of Jeoson Skincare Package Series', 540700, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Beauty Of Jeoson Skincare Package Series', 540700, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket7.jpeg" alt="JGlow skincare paket acne whitening" />
+        <h4>JGlow skincare paket acne whitening</h4>
+        <p class="harga">Rp445.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('JGlow skincare paket acne whitening', 445000, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('JGlow skincare paket acne whitening', 445000, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket8.jpeg" alt="Korean Centella Pink Salt Pore Care Fresh" />
+        <h4>Korean Centella Pink Salt Pore Care Fresh</h4>
+        <p class="harga">Rp368.500</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('Korean Centella Pink Salt Pore Care Fresh', 368500, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('Korean Centella Pink Salt Pore Care Fresh', 368500, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/paket9.jpeg" alt="The Ordinary THE DAILY SET" />
+        <h4>The Ordinary THE DAILY SET</h4>
+        <p class="harga">Rp690.000</p>
+        <div class="produk-actions">
+          <a href="#" class="btn-produk" onclick="addToCart('The Ordinary THE DAILY SET', 690000, 'images/paket1.jpeg')">Belanja Sekarang</a>
+          <a href="#" class="btn-cta kecil" onclick="addToCart('The Ordinary THE DAILY SET', 690000, 'images/paket1.jpeg')">Tambah ke Keranjang</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer data-aos="fade-up">
+    <p>&copy; 2025 Hudraè Skincare. Semua Hak Dilindungi.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="shop.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 120
+    });
+  </script>
+
+</body>
+</html>

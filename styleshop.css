@@ -1,0 +1,171 @@
+/* styleshop.css */
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff9fb;
+  color: #333;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(to right, #fbe8ec, #f5d9e5);
+  padding: 20px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #d46a92;
+}
+
+.logo img {
+  width: 50px;
+  height: 20px;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: #d46a92;
+}
+
+/* Produk Section */
+.store-section {
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.store-section h1 {
+  font-size: 2.2rem;
+  color: #d46a92;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  text-align: left;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  max-height: 180px;
+}
+
+.product-card h4 {
+  font-size: 1.1rem;
+  color: #d46a92;
+  margin: 0 0 10px;
+}
+
+.product-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.product-card .harga {
+  font-weight: bold;
+  color: #b94f7b;
+  margin-bottom: 15px;
+}
+
+.product-card button {
+  background: #d46a92;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.product-card button:hover {
+  background: #b94f7b;
+}
+
+/* Tombol Produk (Belanja Sekarang & Tambah ke Keranjang) */
+.produk-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-produk {
+  background: #d46a92;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-produk:hover {
+  background: #b94f7b;
+}
+
+.btn-cta.kecil {
+  background: transparent;
+  color: #d46a92;
+  border: 2px solid #d46a92;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-cta.kecil:hover {
+  background: #d46a92;
+  color: #fff;
+}
+
+
+/* Footer */
+footer {
+  background: #fbe8ec;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}

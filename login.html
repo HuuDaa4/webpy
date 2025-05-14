@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Hudraè</title>
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="stylelogin.css">
+  <link rel="icon" href="images/logo.png">
+</head>
+<body>
+ <!-- Pemutar Musik -->
+<audio id="bg-music" autoplay>
+  <source id="music-src" src="music/love-dive.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Tombol Toggle -->
+<button onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;z-index:999;background:#d46a92;color:#fff;border:none;padding:10px 15px;border-radius:8px;">
+  🔊 Musik
+</button>
+
+<!-- Script Pemutar Otomatis 2 Lagu -->
+<script>
+  const music = document.getElementById("bg-music");
+  const source = document.getElementById("music-src");
+
+  const playlist = ["music/love-dive.mp3", "music/heya.mp3"];
+  let index = parseInt(localStorage.getItem("musicIndex")) || 0;
+  let time = parseFloat(localStorage.getItem("musicTime")) || 0;
+  let muted = localStorage.getItem("musicMuted") === "true";
+
+  function loadMusic() {
+    source.src = playlist[index];
+    music.load();
+    music.currentTime = time;
+    music.muted = muted;
+    music.play().catch(() => {}); // Prevent error if blocked
+  }
+
+  // Simpan waktu dan index
+  music.addEventListener("timeupdate", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+  });
+
+  // Jika lagu selesai (jika loop=false)
+  music.addEventListener("ended", () => {
+    index = (index + 1) % playlist.length;
+    localStorage.setItem("musicIndex", index);
+    localStorage.setItem("musicTime", 0);
+    loadMusic();
+  });
+
+  function toggleMusic() {
+    music.muted = !music.muted;
+    localStorage.setItem("musicMuted", music.muted);
+    if (music.paused) music.play();
+  }
+
+  // Pastikan user klik memicu play pertama kali
+  window.addEventListener("click", () => {
+    if (music.paused) music.play();
+  });
+
+  // Mulai
+  loadMusic();
+</script>
+
+
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo Hudraè">
+        <span>Hudraè Skincare</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="form-section">
+    <div class="form-wrapper">
+      <h2>Masuk Akun</h2>
+      <form action="login" method="POST">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit">Masuk</button>
+      </form>
+      <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Hudraè. Semua Hak Dilindungi.</p>
+  </footer>
+  <script src="auth.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

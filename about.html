@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang Kami | Hudraè Skincare</title>
+  <link rel="stylesheet" href="styleabout.css" />
+  <link rel="icon" href="images/logo.png" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+
+ <!-- Pemutar Musik -->
+<audio id="bg-music" autoplay>
+  <source id="music-src" src="music/love-dive.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Tombol Toggle -->
+<button onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;z-index:999;background:#d46a92;color:#fff;border:none;padding:10px 15px;border-radius:8px;">
+  🔊 Musik
+</button>
+
+<!-- Script Pemutar Otomatis 2 Lagu -->
+<script>
+  const music = document.getElementById("bg-music");
+  const source = document.getElementById("music-src");
+
+  const playlist = ["music/love-dive.mp3", "music/heya.mp3"];
+  let index = parseInt(localStorage.getItem("musicIndex")) || 0;
+  let time = parseFloat(localStorage.getItem("musicTime")) || 0;
+  let muted = localStorage.getItem("musicMuted") === "true";
+
+  function loadMusic() {
+    source.src = playlist[index];
+    music.load();
+    music.currentTime = time;
+    music.muted = muted;
+    music.play().catch(() => {}); // Prevent error if blocked
+  }
+
+  // Simpan waktu dan index
+  music.addEventListener("timeupdate", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+  });
+
+  // Jika lagu selesai (jika loop=false)
+  music.addEventListener("ended", () => {
+    index = (index + 1) % playlist.length;
+    localStorage.setItem("musicIndex", index);
+    localStorage.setItem("musicTime", 0);
+    loadMusic();
+  });
+
+  function toggleMusic() {
+    music.muted = !music.muted;
+    localStorage.setItem("musicMuted", music.muted);
+    if (music.paused) music.play();
+  }
+
+  // Pastikan user klik memicu play pertama kali
+  window.addEventListener("click", () => {
+    if (music.paused) music.play();
+  });
+
+  // Mulai
+  loadMusic();
+</script>
+
+  <!-- HEADER -->
+  <header class="site-header" data-aos="fade-down">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo Hudraè" />
+      <span>Hudraè</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Beranda</a>
+      <a href="about.html" class="active">Tentang</a>
+      <a href="contact.html">Kontak</a>
+      <a href="shop.html">Toko</a>
+      <a href="cart.html">Keranjang</a>
+    </nav>
+  </header>
+
+  <!-- SECTION: Tentang Kami -->
+  <section class="about-section" data-aos="fade-up">
+    <img src="images/logo.png" alt="Tentang Hudraè" class="about-hero-img" />
+    <h1>Tentang Hudraè</h1>
+    <p>
+      Hudraè Skincare hadir sebagai solusi perawatan kulit yang alami, aman, dan efektif. Kami menggabungkan
+      bahan-bahan alami pilihan dengan teknologi modern untuk menghadirkan produk yang cocok untuk semua jenis kulit,
+      termasuk kulit sensitif.
+    </p>
+  </section>
+
+  <!-- SECTION: Misi & Visi -->
+  <section class="misi-visi-section" data-aos="fade-up">
+    <div class="grid">
+      <div class="box" data-aos="fade-right">
+        <h3>Misi Kami</h3>
+        <p>Membantu semua orang tampil percaya diri dengan produk skincare alami yang aman dan berkualitas.</p>
+      </div>
+      <div class="box" data-aos="fade-left">
+        <h3>Visi Kami</h3>
+        <p>Menjadi brand lokal unggulan dalam industri kecantikan berbasis bahan alami di Asia Tenggara.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Tim -->
+  <section class="tim-section" data-aos="fade-up">
+    <h2>Tim Hudraè</h2>
+    <div class="tim-grid">
+      <div class="tim-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/fo.jpg" alt="Miftakhul Huda" />
+        <h4>Miftakhul Huda</h4>
+        <p>Founder & Web Creator</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer data-aos="fade-up">
+    <p>&copy; 2025 Hudraè Skincare. Semua Hak Dilindungi.</p>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+
+</body>
+</html>

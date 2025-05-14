@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Music Player</title>
+</head>
+<body style="margin:0; padding:0;">
+
+<audio id="bg-music" autoplay loop>
+  <source src="music/love-dive.mp3" type="audio/mpeg" />
+  <source src="music/heya.mp3" type="audio/mpeg" />
+</audio>
+
+<script>
+  const music = document.getElementById("bg-music");
+  music.currentTime = parseFloat(localStorage.getItem("bgMusicTime")) || 0;
+  music.muted = localStorage.getItem("bgMusicMuted") === "true";
+
+  music.addEventListener("timeupdate", () => {
+    localStorage.setItem("bgMusicTime", music.currentTime);
+  });
+
+  window.addEventListener("message", (e) => {
+    if (e.data === "toggleMusic") {
+      music.muted = !music.muted;
+      localStorage.setItem("bgMusicMuted", music.muted);
+    }
+  });
+</script>
+
+</body>
+</html>

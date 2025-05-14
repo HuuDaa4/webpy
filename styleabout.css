@@ -1,0 +1,231 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff9fb;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* HEADER */
+.site-header {
+  background: linear-gradient(to right, #fbe8ec, #f5d9e5);
+  padding: 20px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #d46a92;
+}
+
+.logo img {
+  width: 50px;
+  height: 20px;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: #d46a92;
+}
+
+/* FOOTER */
+footer {
+  background: #fbe8ec;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}
+
+/* === HALAMAN UMUM SECTION === */
+.about-section,
+.contact-section,
+.keranjang-section,
+.tim-section,
+.misi-visi-section {
+  padding: 60px 10%;
+  background: #fffafc;
+  text-align: center;
+}
+
+.about-section p,
+.contact-section p,
+.misi-visi-section p {
+  color: #555;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+/* === FORM === */
+.contact-form,
+.keranjang-container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea,
+.keranjang-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.contact-form button,
+.keranjang-container button {
+  background: #d46a92;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover,
+.keranjang-container button:hover {
+  background: #b94f7b;
+}
+
+/* === Gambar Utama About === */
+.about-hero-img {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* === Ikon Visi Misi === */
+.icon {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+/* === Visi Misi Section === */
+.misi-visi-section .grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 350px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.box h3 {
+  color: #d46a92;
+  margin-bottom: 10px;
+}
+
+.box p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* === TIM === */
+.tim-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.tim-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 240px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.tim-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 100%;
+  margin-bottom: 15px;
+}
+
+.tim-card h4 {
+  color: #d46a92;
+  margin-bottom: 5px;
+}
+
+.tim-card p {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    margin-top: 10px;
+  }
+
+  .nav a {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+  }
+
+  .misi-visi-section .grid,
+  .tim-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-hero-img {
+    max-width: 100%;
+  }
+}

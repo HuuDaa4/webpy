@@ -1,0 +1,255 @@
+/* RESET & UMUM */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff9fb;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* HEADER */
+.site-header {
+  background: linear-gradient(to right, #fbe8ec, #f5d9e5);
+  padding: 20px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #d46a92;
+}
+
+.logo img {
+  width: 50px;
+  height: 20px;
+}
+
+.nav a {
+  margin-left: 20px;
+  font-weight: 500;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: #d46a92;
+}
+
+/* HERO */
+.hero {
+  padding: 80px 10% 60px;
+  background: #fff0f5;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #d46a92;
+}
+
+.hero span {
+  color: #b94f7b;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.btn-cta {
+  display: inline-block;
+  background: #d46a92;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: #b94f7b;
+}
+
+/* FITUR SECTION */
+.fitur-section {
+  padding: 60px 10%;
+  background: #fff9fb;
+  text-align: center;
+}
+
+.fitur-section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #d46a92;
+}
+
+.fitur-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.fitur-item {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.fitur-item img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.fitur-item h4 {
+  margin-bottom: 10px;
+  color: #b94f7b;
+}
+
+/* PRODUK */
+
+.fitur-item img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.produk-section {
+  padding: 60px 10%;
+  background: #ffffff;
+  text-align: center;
+}
+
+.produk-section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #d46a92;
+}
+
+.produk-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.produk-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  text-align: left;
+}
+
+.produk-card:hover {
+  transform: translateY(-5px);
+}
+
+.produk-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  max-height: 180px;
+}
+
+.produk-card h4 {
+  font-size: 1.1rem;
+  color: #d46a92;
+  margin-bottom: 8px;
+}
+
+.produk-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.produk-card .harga {
+  font-weight: bold;
+  color: #b94f7b;
+  margin-bottom: 15px;
+}
+
+.btn-produk {
+  display: inline-block;
+  background: #d46a92;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-produk:hover {
+  background: #b94f7b;
+}
+
+/* TESTIMONI PREVIEW */
+.testimonial-preview {
+  background: #fff9fb;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.testimonial-preview h2 {
+  color: #d46a92;
+  margin-bottom: 40px;
+}
+
+.testimonial-items {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  width: 280px;
+  text-align: left;
+}
+
+.testimonial-card p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.testimonial-card h4 {
+  font-size: 0.9rem;
+  color: #b94f7b;
+}
+
+/* FOOTER */
+footer {
+  background: #fbe8ec;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+}
